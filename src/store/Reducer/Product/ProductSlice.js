@@ -41,21 +41,9 @@ export  const addProducts = createAsyncThunk("product/addProducts", async (data,
 
 })
 
-const initialState =[ 
-    {
-        data : {
-            id :"",
-            name :"",
-            description : "",
-            price : "",
-            type :"",
-            image:"",
-            options:"",
-        }
-        
-        
-    }
-]
+const initialState = {
+    data:[]
+}
 
 const ProductSlice = createSlice({
     name:"product",
@@ -66,11 +54,12 @@ const ProductSlice = createSlice({
     extraReducers : {
         // Get Products
         [getProducts.pending]:(state,action)=>{
-            console.log(action.payload)
+            
         },
         
         [getProducts.fulfilled]:(state,action)=>{
-            console.log(action.payload)
+            
+            state.data = [...action.payload]
         },
 
         [getProducts.rejected]:(state,action)=>{
@@ -78,6 +67,7 @@ const ProductSlice = createSlice({
         },
 
 
+        
         // Add Products 
         [addProducts.pending]:(state,action)=>{
             console.log(action.payload)
