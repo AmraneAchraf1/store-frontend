@@ -1,12 +1,12 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
-const Index = () => {
+const AdminAuth = () => {
   return (
-    <>
+    <div>
     <Outlet/>
-    </>
+    </div>
   )
 }
 
-export default Index
+export default AdminAuth

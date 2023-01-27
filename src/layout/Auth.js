@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
-const Index = () => {
+const Auth = () => {
   return (
     <>
     <Outlet/>
@@ -9,4 +9,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default Auth
