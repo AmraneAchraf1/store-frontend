@@ -3,19 +3,10 @@ import axios from "axios";
 
 
 export const getAccessToken = createAsyncThunk("login/getAccessToken", async (data, thunkAPI) => {
-
         const {rejectWithValue} = thunkAPI;
-        
-        
   try {
     
-    axios.defaults.withCredentials = true;
-
-    const response = await axios.get("http://localhost:8000/sanctum/csrf-cookie").then(response => {
-        
-    const token = response.config.headers.get("X-XSRF-TOKEN")
-    
-    axios({
+    const auth = await axios({
         method: "post",
         data: {
             email: data.email,
@@ -25,30 +16,34 @@ export const getAccessToken = createAsyncThunk("login/getAccessToken", async (da
         
         headers:{
             "Accept": "application/json",
-            
-            "csrf_token": token,
         }
-    }).then(response => {
-        console.log(response.data);
     })
 
-    })
+    const res = await auth.data
 
-    const result =  response
-
-    console.log(result);
+    localStorage.setItem("accessToken", res.access_token)
+    return res
     
-    //localStorage.setItem("accessToken", data.accessToken)
+    
 
+    // const csrf = await axios.get("http://localhost:8000/sanctum/csrf-cookie").then(response => {
+    // const token = response.config.headers.get("X-XSRF-TOKEN")
+    // console.log(token);
+    // })
   } catch (error) {
-    
-   return rejectWithValue(error)
+   return rejectWithValue(error.message)
   }
 
 })
 
 const initialState = {
-    data:[]
+    accessToken:"",
+    tokens:[],
+    admin:[],
+    isLoading:false,
+    isRejected:false,
+    msg:"",
+    isAuth:false,
 }
 
 const LoginSlice = createSlice({
@@ -60,13 +55,31 @@ const LoginSlice = createSlice({
     extraReducers : {
         // Login Products
         [getAccessToken.pending]: (state, action) => {
-            console.log(action.payload);
+            state.isLoading = true;
+            state.isRejected = false;
+          
         },
+
         [getAccessToken.fulfilled]: (state, action) => {
-            console.log(action.payload);
+            state.isRejected = false;
+            state.isLoading = false;
+            state.accessToken = action.payload.access_token;
+            state.tokens = action.payload.token;
+            state.admin = action.payload.admin;
+            state.msg = action.payload.msg;
+
+            if(localStorage.getItem("accessToken") === state.accessToken){
+                state.isAuth = true;
+            }
+            else{
+                state.isAuth = false;
+            }
         },
+
         [getAccessToken.rejected]: (state, action) => {
-            console.log(action.payload);
+            state.isRejected = true;
+            state.isLoading = false;
+            state.msg = "Error";
         },
         
     }

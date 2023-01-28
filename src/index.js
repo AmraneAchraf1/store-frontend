@@ -17,14 +17,16 @@ import Register from "./pages/auth/Register";
 import Layout from "./layout/admin/Layout";
 import AdminAuth from "./layout/AdminAuth";
 import AdminLogin from "./pages/admin/auth/AdminLogin";
-import AdminRegister from "./pages/admin/auth/AdminRegister";
+import Dashboard from "./pages/admin/Dashboard";
+import ErrorPage from "./pages/ErrorPage";
+import IsAuth from "./pages/IsAuth";
 
 const router = createBrowserRouter([
   //User routes
   {
     path: "/",
     element: <Index />,
-
+    errorElement:<ErrorPage/>,
     children: [
       {
         index: true,
@@ -38,7 +40,7 @@ const router = createBrowserRouter([
   {
     path: "/auth",
     element: <Auth />,
-
+    errorElement:<ErrorPage/>,
     children: [
       {
         index: true,
@@ -64,12 +66,17 @@ const router = createBrowserRouter([
   {
     path: "admin",
     element: <Layout />,
-
+    errorElement:<ErrorPage/>,
     children: [
       {
         index: true,
         path: "",
         element: <Product/>,
+      },
+      {
+        
+        path: "dashboard",
+        element: <IsAuth> <Dashboard /></IsAuth>,
       },
     ],
   },
@@ -81,7 +88,7 @@ const router = createBrowserRouter([
   {
     path: "admin/auth",
     element: <AdminAuth />,
-
+    errorElement:<ErrorPage/>,
     children: [
       {
         index: true,
@@ -94,13 +101,6 @@ const router = createBrowserRouter([
         path: "login",
         element: <AdminLogin />,
       },
-
-      {
-        
-        path: "register",
-        element: <AdminRegister />,
-      },
-
 
     ],
   },
