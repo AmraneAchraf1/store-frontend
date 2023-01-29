@@ -3,7 +3,9 @@ import axios from "axios";
 
 
 export const getAccessToken = createAsyncThunk("login/getAccessToken", async (data, thunkAPI) => {
+
         const {rejectWithValue} = thunkAPI;
+
   try {
     
     const auth = await axios({
@@ -24,17 +26,18 @@ export const getAccessToken = createAsyncThunk("login/getAccessToken", async (da
     localStorage.setItem("accessToken", res.access_token)
     return res
     
-    
-
     // const csrf = await axios.get("http://localhost:8000/sanctum/csrf-cookie").then(response => {
     // const token = response.config.headers.get("X-XSRF-TOKEN")
     // console.log(token);
     // })
   } catch (error) {
+
    return rejectWithValue(error.message)
+
   }
 
 })
+
 
 const initialState = {
     accessToken:"",
@@ -50,19 +53,19 @@ const LoginSlice = createSlice({
     name:"login",
     initialState,
     reducers: {
-        
+    
     },
     extraReducers : {
         // Login Products
         [getAccessToken.pending]: (state, action) => {
             state.isLoading = true;
             state.isRejected = false;
-          
         },
 
         [getAccessToken.fulfilled]: (state, action) => {
             state.isRejected = false;
             state.isLoading = false;
+
             state.accessToken = action.payload.access_token;
             state.tokens = action.payload.token;
             state.admin = action.payload.admin;
@@ -74,6 +77,7 @@ const LoginSlice = createSlice({
             else{
                 state.isAuth = false;
             }
+            
         },
 
         [getAccessToken.rejected]: (state, action) => {

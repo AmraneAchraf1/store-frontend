@@ -1,0 +1,57 @@
+aside{
+    background-color: #0d6efd;
+    min-width: 240px;
+    height: 100%;
+   
+}
+
+aside .logo{
+    background: cornflowerblue;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+}
+nav{
+    padding-top: 10px;
+}
+aside .logo:hover span {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0d0d0d;
+}
+
+aside .logo span{
+    font-size: 22px;
+    font-weight: bold;
+    color: #1c1c1c;
+}
+
+li a{
+   text-decoration: none;
+   color: #1c1c1c;
+   transition: .3s;
+   -webkit-transition: .3s;
+   -moz-transition: .3s;
+   -ms-transition: .3s;
+   -o-transition: .3s;
+}
+
+a.active{
+    color: black ;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+li{
+    list-style-type: none;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+}

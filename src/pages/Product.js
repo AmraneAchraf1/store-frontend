@@ -15,11 +15,11 @@ const Product = () => {
         dispatch(getProducts())
     },[dispatch])
 
+    
+
   return (
     <Container>
-
-<CardProduct data= {product.data}/>
-        
+          <CardProduct data= {product.data}/>
     </Container>
   )
 }

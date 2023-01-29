@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 
 import "./index.css";
 import store from "./store";
@@ -20,6 +20,11 @@ import AdminLogin from "./pages/admin/auth/AdminLogin";
 import Dashboard from "./pages/admin/Dashboard";
 import ErrorPage from "./pages/ErrorPage";
 import IsAuth from "./pages/IsAuth";
+import Users from "./pages/admin/Users";
+import AdminProducts from "./pages/admin/AdminProducts";
+import { getProducts } from "./store/Reducer/Product/ProductSlice";
+
+
 
 const router = createBrowserRouter([
   //User routes
@@ -65,18 +70,34 @@ const router = createBrowserRouter([
   //Admin routes
   {
     path: "admin",
-    element: <Layout />,
+    element: <IsAuth> <Layout /> </IsAuth>,
     errorElement:<ErrorPage/>,
     children: [
       {
         index: true,
         path: "",
-        element: <Product/>,
+        element: <IsAuth> <Dashboard /></IsAuth>,
       },
       {
         
         path: "dashboard",
         element: <IsAuth> <Dashboard /></IsAuth>,
+      },
+      {
+        
+        path: "users",
+        element: <IsAuth> <Users /></IsAuth>,
+      },
+      {
+        
+        path: "products",
+        // loader :async ()=>{
+          
+        //   const products =  await store.dispatch(getProducts());
+
+        //   return products;
+        // },
+        element: <IsAuth> <AdminProducts/> </IsAuth>,
       },
     ],
   },

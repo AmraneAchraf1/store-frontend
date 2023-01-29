@@ -9,7 +9,6 @@ export const revokeToken = createAsyncThunk("logout/revokeToken", async (data, t
     const auth = await axios({
         method: "post",
         url: "http://localhost:8000/api/admin/auth/logout",
-        
         headers:{
             "Accept": "application/json",
             "Authorization":`Bearer ${localStorage.getItem("accessToken")}`,

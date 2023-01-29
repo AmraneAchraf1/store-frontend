@@ -3,6 +3,7 @@ import axios from "axios";
 
 //admin
 // typePrefix , pyloadCreatore
+
 export  const authAdmin = createAsyncThunk("admin/authAdmin", async (_, thunkAPI)=> {
     const {rejectWithValue} = thunkAPI
 
@@ -50,6 +51,7 @@ const AdminSlice = createSlice({
         },
         [authAdmin.rejected]: (state, action) => {
             state.isLoading = false
+            
             state.admin = action.payload
         },
         
