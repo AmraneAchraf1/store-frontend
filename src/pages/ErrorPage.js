@@ -1,11 +1,17 @@
 import React from 'react'
-import { useRouteError } from 'react-router-dom'
+import { Button } from 'react-bootstrap';
+import { useNavigate, useRouteError } from 'react-router-dom'
 
 const ErrorPage = () => {
   const error = useRouteError()
-  console.log(error.message);
+
+const navigate = useNavigate()
   return (
-    <div>ErrorPage</div>
+    <>
+        <h1>{error.data}</h1>
+        <Button onClick={()=>navigate("/admin/auth/login" ,{replace:true})}>Pleas Login</Button>
+    </>
+
   )
 }
 

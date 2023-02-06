@@ -11,7 +11,7 @@ const AdminCardProduct = ({data}) => {
 
    
     const [show, setShow] = useState(false);
-    const [formData, setFormData] = useState();
+
   
     const [name, setName] = useState("");
     const [id, setId] = useState("");
@@ -53,8 +53,9 @@ const AdminCardProduct = ({data}) => {
         setError("Image not found")
       }else{
         setError("")
-        dispatch(updateProduct(data))
         
+        dispatch(updateProduct(data))
+        handleClose()
       }
   
     }

@@ -33,8 +33,16 @@ const AdminProducts = () => {
       image,
     };
     
-    if(data){
+    if(data.name && data.type && data.description && data.image && data.price){
+      
       dispatch(addProducts(data))
+      setDescription("")
+      setImage("")
+      setType("")
+      setPrice('')
+      setName("")
+    }else{
+      console.log("data not found");
     }
 
   }
@@ -129,7 +137,7 @@ const AdminProducts = () => {
           Add Product
         </Button>
 
-        <div className="d-flex  pt-3 gap-5">
+        <div className="d-flex  pt-3 gap-5 flex-wrap justify-content-center">
           {product.isLoading ? (
             "Loading...."
           ) : (

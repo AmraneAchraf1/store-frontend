@@ -23,6 +23,7 @@ export  const authAdmin = createAsyncThunk("admin/authAdmin", async (_, thunkAPI
                 return res
                 
             } catch (error) {
+                
                 return rejectWithValue(error.message)
             }
 
@@ -33,6 +34,7 @@ const AdminSlice = createSlice({
         admin: [
 
         ],
+        msg:"",
         isLoading: false,
         isRejected: false
     },
@@ -43,16 +45,17 @@ const AdminSlice = createSlice({
         // Admin
         [authAdmin.pending]: (state, action) => {
             state.isLoading = true
+            state.isRejected = false
         },
         [authAdmin.fulfilled]: (state, action) => {
             state.isLoading = false
-            
             state.admin = action.payload
+            state.isRejected = false
         },
         [authAdmin.rejected]: (state, action) => {
             state.isLoading = false
-            
-            state.admin = action.payload
+            state.msg = action.payload
+            state.isRejected = true
         },
         
     }

@@ -24,12 +24,16 @@ export const getAccessToken = createAsyncThunk("login/getAccessToken", async (da
     const res = await auth.data
 
     localStorage.setItem("accessToken", res.access_token)
-    return res
     
+    return res
+
+    //- This code if you want to use Cookies Make sure you Use EnsureFrontendRequestsAreStateful Middleware in Sanctum --
+    //
     // const csrf = await axios.get("http://localhost:8000/sanctum/csrf-cookie").then(response => {
     // const token = response.config.headers.get("X-XSRF-TOKEN")
     // console.log(token);
     // })
+    // ------------------------------------------------------------------------------------------------
   } catch (error) {
 
    return rejectWithValue(error.message)
@@ -56,7 +60,7 @@ const LoginSlice = createSlice({
     
     },
     extraReducers : {
-        // Login Products
+        // Login 
         [getAccessToken.pending]: (state, action) => {
             state.isLoading = true;
             state.isRejected = false;
@@ -74,16 +78,16 @@ const LoginSlice = createSlice({
             if(localStorage.getItem("accessToken") === state.accessToken){
                 state.isAuth = true;
             }
-            else{
-                state.isAuth = false;
-            }
+            
             
         },
 
         [getAccessToken.rejected]: (state, action) => {
             state.isRejected = true;
             state.isLoading = false;
+            console.log(action.payload);
             state.msg = "Error";
+            
         },
         
     }

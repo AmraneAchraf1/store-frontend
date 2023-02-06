@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
-import { Provider, useDispatch } from "react-redux";
+import { Provider } from "react-redux";
 
 import "./index.css";
 import store from "./store";
@@ -22,7 +22,13 @@ import ErrorPage from "./pages/ErrorPage";
 import IsAuth from "./pages/IsAuth";
 import Users from "./pages/admin/Users";
 import AdminProducts from "./pages/admin/AdminProducts";
-import { getProducts } from "./store/Reducer/Product/ProductSlice";
+import Cart from "./pages/Cart";
+
+// Bootstrap and Theming
+import "bootstrap/dist/css/bootstrap.rtl.min.css"
+import "bootstrap/dist/css/bootstrap.min.css"
+import { ThemeProvider } from "react-bootstrap";
+
 
 
 
@@ -38,6 +44,12 @@ const router = createBrowserRouter([
         path: "/",
         element: <Product />,
       },
+      {
+        
+        path: "cart",
+        element: <Cart />,
+      },
+
     ],
   },
 
@@ -133,6 +145,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <Provider store={store}>
+  <ThemeProvider dir="rtl">
     <RouterProvider router={router} />
+  </ThemeProvider>
+    
   </Provider>
 );
