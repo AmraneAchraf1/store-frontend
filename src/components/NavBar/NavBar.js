@@ -21,11 +21,11 @@ const NavBar = () => {
         <Nav className="me-auto">
          
         </Nav>
-        <Link to={"cart"} className="btn btn-outline-dark "> Cart {
+        <Link to={"cart"} className="btn btn-outline-dark ">  {
           isLoading ? (<Spinner variant="dark" animation="border" role="status">
           <RiShoppingCart2Line/>
-              </Spinner>): (<span className=" mx-1"><RiShoppingCart2Line/>
-        {JSON.parse(localStorage.getItem("cartItems")) ? JSON.parse(localStorage.getItem("cartItems")).length :cartItems.length  }
+              </Spinner>): (<span className=" mx-1"><RiShoppingCart2Line/> 
+          {" "}   {JSON.parse(localStorage.getItem("cartItems")) ? JSON.parse(localStorage.getItem("cartItems")).length :cartItems.length  }
          </span>)
         }  </Link>
       </Navbar.Collapse>
