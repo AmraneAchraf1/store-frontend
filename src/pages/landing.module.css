@@ -1,0 +1,99 @@
+:root {
+  --green: #62b250 !important;
+  --first: #1c1c1c !important;
+  --dark: #0d0d0d !important;
+  --light: #ACACAC !important;
+}
+
+.home {
+  width: 100%;
+  align-items: center;
+  padding: 100px 0;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.qoba{
+  z-index: 10;
+  transition: .3s;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -ms-transition: .3s;
+  -o-transition: .3s;
+}
+
+.qoba:hover {
+  filter:drop-shadow(8px 8px 10px #62b25010);
+  -webkit-filter:drop-shadow(8px 8px 10px #62b25010);
+  transform: scale(1.03 , 1.03);
+  -webkit-transform: scale(1.03 , 1.03);
+  -moz-transform: scale(1.03 , 1.03);
+  -ms-transform: scale(1.03 , 1.03);
+  -o-transform: scale(1.03 , 1.03);
+}
+
+/* Left Side */
+.home div:first-child {
+  /* background-color: rgba(137, 43, 226, 0.247); */
+  height: 100%;
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+
+  gap: 50px
+}
+
+
+
+.home div:first-child h1 {
+  color: var(--green);
+  font-weight: bold;
+  position: relative;
+
+  font-size: 113px;
+  background-color: var(--green);
+  line-height: 1.4;
+  color: transparent;
+  text-shadow: 0px 1px 1px var(--green), -4px -4px 18px var(--dark),
+    -3px 1px 6px var(--dark), -2px -1px 2px var(--green),
+    23px 23px 24px var(--dark);
+
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+}
+
+.home div:first-child p{
+  font-family: 'Lato', sans-serif !important;
+  font-size: 20px;
+  word-wrap: break-word;
+  width: 580px;
+  max-width: 100%;
+  padding-left: 2px;
+  color: #ACACAC;
+  padding-bottom: 42px;
+  line-height: 1.7;
+}
+
+.paragraph{
+  font-family: 'Lato', sans-serif !important;
+  font-size: 20px;
+  word-wrap: break-word;
+  width: auto;
+  padding: 16px 0 !important;
+  max-width: 100%;
+  color: #ACACAC;
+  line-height: 1.7;
+}
+
+
+
+/* Right Side  */
+.home div:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,113 @@
+.swiper {
+    width: 100%;
+
+    border-radius: 32px;
+    -webkit-border-radius: 32px;
+    -moz-border-radius: 32px;
+    -ms-border-radius: 32px;
+    -o-border-radius: 32px;
+}
+
+
+
+.swiper-button-next{
+  color: transparent;
+  background-image: url("./nextoutline.svg");
+  transition: .3s;
+  background-size: contain;
+  background-position: 50% 60%;
+  background-repeat: no-repeat;
+  width: 150px;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -ms-transition: .3s;
+  -o-transition: .3s;
+}
+
+.swiper-button-next:hover{
+
+  background-image: url("./next.svg");
+
+}
+.swiper-pagination-bullet{
+  opacity: 1;
+  background-color: transparent !important;
+  width: 20px !important;
+  height: 20px !important;
+  border: 1px solid #fff;
+}
+.swiper-pagination-bullet-active{
+  background-color: #fff !important;
+}
+.swiper-button-prev{
+  color: transparent;
+  background-image: url("./prevoutline.svg");
+  transition: .3s;
+  background-size: contain;
+  background-position: 50% 60%;
+  background-repeat: no-repeat;
+  width: 150px;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -ms-transition: .3s;
+  -o-transition: .3s;
+}
+
+.swiper-button-prev:hover{
+
+  background-image: url("./prev.svg");
+
+}
+
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background-color: #274839 ;
+    height: 600px;
+    width: 300px;
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+
+@media (max-width: 992px) {
+  .swiper-slide{
+    height: 400px;
+    width: 200px;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next
+  {
+    width: 20px;
+  }
+
+  .swiper-pagination-bullet{
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+
+}
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .swiper-slide {
+    width: 80%;
+  }
+  
+  .swiper-slide:nth-child(2n) {
+    width: 60%;
+  }
+  
+  .swiper-slide:nth-child(3n) {
+    width: 70%;
+  }
+  

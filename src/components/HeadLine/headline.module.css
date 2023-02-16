@@ -1,0 +1,129 @@
+.parent{
+    width: 100%;
+    padding: 32px 16px;
+    margin: 82px 0 82px 0;
+    background-color: var(--first);
+    color: var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    border-radius: 8px 8px 32px 32px;
+    -webkit-border-radius: 8px 8px 32px 32px;
+    -moz-border-radius: 8px 8px 32px 32px;
+    -ms-border-radius: 8px 8px 32px 32px;
+    -o-border-radius: 8px 8px 32px 32px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.107);
+    transition: .4s;
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -ms-transition: .4s;
+    -o-transition: .4s;
+}
+.parent:hover{
+    transform: scale(1.02, 1.02);
+    -webkit-transform: scale(1.02, 1.02);
+    -moz-transform: scale(1.02, 1.02);
+    -ms-transform: scale(1.02, 1.02);
+    -o-transform: scale(1.02, 1.02);
+}
+.parent:hover .text,
+.parent:hover .logo svg
+{
+    color: var(--green);
+    fill: var(--green);
+}
+
+.parent:hover .line  {
+    background-color: var(--green);
+}
+
+
+
+
+.line{
+    z-index: 10;
+    height: 62px;
+    width: 3px;
+    border-radius: 12px;
+    background-color: var(--light);
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    transition: .4s;
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -ms-transition: .4s;
+    -o-transition: .4s;
+}
+
+.logo svg {
+        fill: var(--light);
+        transition: .4s;
+        -webkit-transition: .4s;
+        -moz-transition: .4s;
+        -ms-transition: .4s;
+        -o-transition: .4s;
+        
+}
+.text{
+    font-size:  40px;
+    transition: .4s;
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -ms-transition: .4s;
+    -o-transition: .4s;
+}
+
+@media (max-width:775px) {
+    .parent{
+        gap: 16px;
+        padding: 32px 4px;
+     
+    }
+
+    .text{
+        font-size: 28px;
+    }
+    .log{
+        width: 137px;
+    }
+    .logo svg {
+        margin: 0;
+        padding: 0;
+        width: fit-content;
+        transform: scale(.7);
+        -webkit-transform: scale(.7);
+        -moz-transform: scale(.7);
+        -ms-transform: scale(.7);
+        -o-transform: scale(.7);
+}
+    
+}
+
+@media (max-width:450px) {
+    .parent{
+        gap: 4px;
+
+     
+    }
+
+    .text{
+        font-size: 18px;
+        word-wrap: break-word;
+    }
+  
+    .logo svg {
+        
+        margin: 0;
+        padding: 0;
+        
+        transform: scale(.5);
+        -webkit-transform: scale(.5);
+        -moz-transform: scale(.5);
+        -ms-transform: scale(.5);
+        -o-transform: scale(.5);
+}
+    
+}

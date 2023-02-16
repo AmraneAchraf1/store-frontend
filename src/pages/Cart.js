@@ -16,7 +16,10 @@ const Cart = () => {
 
   return (
     <Container className='pt-3'>
-       <CartItem data={data} isLoading={isLoading}/>
+    {isLoading ? <p className='text-light'>Loading...</p> : (
+      <CartItem data={data} isLoading={isLoading}/>
+      )}
+       
     </Container>
   )
 }

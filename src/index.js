@@ -1,28 +1,48 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Provider } from "react-redux";
-
+//<= Global styles =>
 import "./index.css";
+
+//<= Redux =>
+import { Provider } from "react-redux";
 import store from "./store";
 
+//<=  Router =>
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Product from "./pages/Product";
 
-import Index from "./layout/Index";
+//<= Layouts  =>
+// ---------------- User Layout -----------------
 import Auth from "./layout/Auth";
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-
-// admin routes
+import Index from "./layout/Index";
+// ---------------- Admin Layout ----------------
 import Layout from "./layout/admin/Layout";
 import AdminAuth from "./layout/AdminAuth";
-import AdminLogin from "./pages/admin/auth/AdminLogin";
-import Dashboard from "./pages/admin/Dashboard";
+// ----------------------------------------------
+
+//<= Pages  =>
+// 404 
 import ErrorPage from "./pages/ErrorPage";
+// Check if the user is logged in
 import IsAuth from "./pages/IsAuth";
+//----------------- User Pages ------------------
+
+//--- Auth Pages ----------------
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+//--- Other Pages ----------------
+import Cart from "./pages/Cart";
+import Landing from "./pages/Landing";
+
+//----------------- Admin Pages ------------------
+
+//--- Auth Pages ----------------
+import AdminLogin from "./pages/admin/auth/AdminLogin";
+//-- dashboard Pages ----------------
+import Dashboard from "./pages/admin/Dashboard";
 import Users from "./pages/admin/Users";
 import AdminProducts from "./pages/admin/AdminProducts";
-import Cart from "./pages/Cart";
+//----------------------------------------------------------------
 
 // Bootstrap and Theming
 import "bootstrap/dist/css/bootstrap.rtl.min.css"
@@ -32,28 +52,54 @@ import { ThemeProvider } from "react-bootstrap";
 
 
 
+
 const router = createBrowserRouter([
-  //User routes
+  // =========  User routes  =========
   {
     path: "/",
     element: <Index />,
     errorElement:<ErrorPage/>,
     children: [
       {
-        index: true,
-        path: "/",
-        element: <Product />,
+       
+        path: "",
+        element: <Landing />,
+
+        children : [
+          {
+            index: true,
+            path:"",
+            
+            element: <Landing />,
+          },
+          {
+           
+            path:"events",
+            element: <Landing />,
+          },
+          {
+            
+            path:"lastProducts",
+            element: <Landing />,
+          }
+        ]
       },
+
       {
         
         path: "cart",
         element: <Cart />,
       },
+      {
+        
+        path: "products",
+        element: <Product />,
+      },
 
     ],
   },
 
-  //Auth User routes
+  //--- Auth User routes
   {
     path: "/auth",
     element: <Auth />,
@@ -79,7 +125,7 @@ const router = createBrowserRouter([
     ],
   },
 
-  //Admin routes
+  // ========= Admin routes =========
   {
     path: "admin",
     element: <IsAuth> <Layout /> </IsAuth>,
@@ -103,6 +149,7 @@ const router = createBrowserRouter([
       {
         
         path: "products",
+        // To load data before component is rendered
         // loader :async ()=>{
           
         //   const products =  await store.dispatch(getProducts());
@@ -114,9 +161,6 @@ const router = createBrowserRouter([
     ],
   },
   
-
-  
-
   //Auth Admin routes
   {
     path: "admin/auth",
