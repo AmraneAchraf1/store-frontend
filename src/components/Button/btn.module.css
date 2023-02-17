@@ -19,6 +19,11 @@
     -o-transition: .3s;
 }
 
+.btn:disabled{
+    cursor:wait;
+    filter: brightness(70%);
+    -webkit-filter: brightness(70%);
+}
 
 .btn.green{
     background-color: #62B250;

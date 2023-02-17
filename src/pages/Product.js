@@ -20,11 +20,7 @@ const Product = () => {
 
   return (
     <Container>
-          <div className="d-flex gap-3 pt-3 justify-content-center flex-wrap ">
-          <CardProduct data= {product.data}/>
-          </div>
-
-
+          <CardProduct data= {product.data} grid={true}/>
     </Container>
   )
 }

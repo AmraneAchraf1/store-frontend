@@ -42,7 +42,6 @@
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
-
   gap: 50px
 }
 
@@ -77,7 +76,11 @@
   padding-bottom: 42px;
   line-height: 1.7;
 }
-
+.home a,
+.home a:hover{
+  text-decoration: none;
+  color: #fff;
+}
 .paragraph{
   font-family: 'Lato', sans-serif !important;
   font-size: 20px;

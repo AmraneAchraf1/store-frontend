@@ -3,10 +3,9 @@ import axios from "axios";
 
 //Add to Cart
 // typePrefix , pyloadCreatore(data, thunkAPI)
-export  const addToCart = createAsyncThunk("cart/addToCart", async (data, thunkAPI)=> {
+export  const addToCart = createAsyncThunk("cart/addToCart", async (id, thunkAPI)=> {
 
     const {rejectWithValue} = thunkAPI
-
 
     const userCartId = ()=>{
         // Check if localStorage contains the userCartId
@@ -25,7 +24,7 @@ export  const addToCart = createAsyncThunk("cart/addToCart", async (data, thunkA
             method: "post",
             url: "http://localhost:8000/api/cart",
             data:{
-                "product_id":data.id,
+                "product_id":id,
                 "user_cart_id":userCartId(),
             },
             headers:{

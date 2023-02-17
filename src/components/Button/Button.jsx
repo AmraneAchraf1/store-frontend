@@ -12,6 +12,8 @@ export const BtnGroup = ({children, ...props}) => {
 
 
 const Button = ({ children, variant, direction, ...props }) => {
+
+  
   const btnDirection = () => {
     if (direction === "left") {
       return styles.left;

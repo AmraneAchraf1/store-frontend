@@ -3,6 +3,7 @@ import React, {  useEffect, useRef } from "react";
 
 import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 // import { Route, useLocation, useResolvedPath } from "react-router-dom";
 
 import Button from "../components/Button/Button";
@@ -46,8 +47,18 @@ const Landing = () => {
               population, including Berbers and Moroccan Jews. The Ait Urtajjen.
             </p>
             <Button.Group>
-              <Button >Shop now</Button>
-              <Button variant={"black"} direction={"left"}>Shop now</Button>
+              
+                <Link to="products" >
+                <Button >Shop now</Button>
+                
+                
+                </Link>
+              
+                <Link to="" >
+                <Button direction={"left"} variant={"black"}>Contact Us</Button>
+                
+                
+                </Link>
             </Button.Group>
           </div>
           
@@ -71,7 +82,7 @@ const Landing = () => {
     <HeadLine ref={lastProductsReef}>
     Dernier Produits
       </HeadLine>
-    <Container>
+    <Container >
 
       <CardProduct data= {product.data} newProduct={true} grid={true}/>
 

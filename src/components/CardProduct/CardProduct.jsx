@@ -12,9 +12,9 @@ const CardProduct = ({ data, newProduct, grid }) => {
   const { isLoading } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  const addProductToCart = (product) => {
-    if (product) {
-      dispatch(addToCart(product));
+  const addProductToCart = (id) => {
+    if (id) {
+      dispatch(addToCart(id));
     }
   };
 
@@ -37,19 +37,19 @@ const CardProduct = ({ data, newProduct, grid }) => {
                 {p.name}
             </h1>
 
-            <p >
+            <p title={p.description}>
               {p.description}  
             </p>
         </div>
 
         <div className={styles.btn}>
-        <Button variant={"black"}> <FiShoppingCart /> Add To Cart</Button>
+        <Button variant={"black"} onClick={()=> addProductToCart(p.id)} disabled={isLoading} > <FiShoppingCart /> Add To Cart</Button>
         </div>
       </div>
     );
   });
 
-  return <div className={grid ? styles.grid : ""}>{product}</div>;
+  return <div className={grid ? styles.grid : ""}>{newProduct ? product.reverse().slice(0,6): product}</div>;
 };
 
 export default CardProduct;
